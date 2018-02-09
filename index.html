@@ -25,29 +25,7 @@
 	<script src="scripts/game.js"></script>
 
 	<script>
-
-		// init spaces & tiles
-		for (var i = 1; i < boardSize; i++ ) {
-			game.spaces[i] = Math.floor(Math.random() * (boardSize - 1)) + 1; // todo: this will generate duplicate numbers
-		}
-		game.spaces[boardSize] = emptyTile;
-
-		// output
-		game.draw();
-
-		
-
-		// DEBUG : print out tile values
-		//for(var key in game.spaces) {
-		//	console.log(game.spaces[key]);
-		//}
-
-		// move
-		//game.move(5); 
-		//alert(game.spaces[8]);
-		//alert(game.spaces[5]);
-
-
+		game.init();
 	</script>
 </body>
 </html>
