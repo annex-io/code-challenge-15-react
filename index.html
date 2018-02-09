@@ -28,12 +28,14 @@
 
 		// init spaces & tiles
 		for (var i = 1; i < boardSize; i++ ) {
-			game.spaces[i] = Math.floor(Math.random() * (boardSize - 1)) + 1; // todo: it's possible this will generate duplicate numbers
-
+			game.spaces[i] = Math.floor(Math.random() * (boardSize - 1)) + 1; // todo: this will generate duplicate numbers
 		}
+		game.spaces[boardSize] = emptyTile;
 
 		// output
 		game.draw();
+
+		
 
 		// DEBUG : print out tile values
 		//for(var key in game.spaces) {
