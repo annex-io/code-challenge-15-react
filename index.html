@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	
+	<meta name="description" content="Isobar Code Challenge">
+	<meta name="author" content="Lawry Xerri">
+
+	<title>Board Game</title>
+
+	<!-- <link rel="icon" href="/favicon.ico" type="image/x-icon" /> -->
+    <link rel="stylesheet" type="text/css" href="styles/normalize.css"/>
+	<link rel="stylesheet" type="text/css" href="styles/game.css"/>
+        
+</head>
+
+<body>
+
+	<div class="board">
+		<!-- populated through js -->
+	</div>
+
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="scripts/game.js"></script>
+
+	<script>
+
+		// init spaces & tiles
+		for (var i = 1; i < boardSize; i++ ) {
+			game.spaces[i] = Math.floor(Math.random() * (boardSize - 1)) + 1; // todo: it's possible this will generate duplicate numbers
+
+		}
+
+		// output
+		game.draw();
+
+		// DEBUG : print out tile values
+		//for(var key in game.spaces) {
+		//	console.log(game.spaces[key]);
+		//}
+
+		// move
+		//game.move(5); 
+		//alert(game.spaces[8]);
+		//alert(game.spaces[5]);
+
+
+	</script>
+</body>
+</html>
