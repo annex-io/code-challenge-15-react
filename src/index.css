@@ -1,0 +1,12 @@
+html { font-family: Helvetica, Arial, sans-serif; letter-spacing: .03em; line-height: 62.5%; color: #222; font-size: 62.5%; }
+
+body { font-size: 2.0rem; line-height:1.6rem; }
+
+
+.board { margin:10%; overflow:hidden; }
+.space { width:23.73%; padding:10% 0; float: left; text-align:center; background-color:#f9f2f4; border: solid 1px red; cursor:pointer; }
+
+@media (min-width: 768px) {
+    .board { width:768px; margin:10px auto; }
+    .space { width:190px; }
+}
