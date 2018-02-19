@@ -7,17 +7,28 @@ import './index.css';
 function Space(props) {
 	return (
 		<button className="space" onClick={props.onClick}>
-			{props.value}
+			{props.value == null ? ' ' : props.value}
 		</button>
 	)
 }
 // ========================================
 class Board extends React.Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			tiles: Array.from({length: 16}, () => Math.floor(Math.random() * 15)).fill(null, 15),
+		}
+	}
+
+	handleClick(i) {
+		// move tile
+	}
+
 	renderTile(i) {
 	    return (
 	    	<Space 
-	    		value={i} 	    		
+	    		value={this.state.tiles[i]} 	    		
 	    		onClick={() => alert(i)}
 			/>
 		);
@@ -41,7 +52,7 @@ class Board extends React.Component {
 				{this.renderTile(12)}
 				{this.renderTile(13)}
 				{this.renderTile(14)}
-				<div class="space" data-space="15" data-tile="&amp;nbsp;">&nbsp;</div>
+				{this.renderTile(15)}
 			</div>
 		)
 	}
