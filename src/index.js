@@ -7,7 +7,7 @@ import './index.css';
 function Space(props) {
 	return (
 		<button className="space" onClick={props.onClick}>
-			{props.value == null ? ' ' : props.value}
+			{props.value == null ? '-' : props.value}
 		</button>
 	)
 }
@@ -22,21 +22,38 @@ class Board extends React.Component {
 	}
 
 	handleClick(i) {
-		// move tile
+		const tiles = this.state.tiles.slice();
+
+		//alert('clicked: ' + i + ' tile: ' + tiles[i]);
+		//let moveThis = tiles[i];
+		
+		// find empty tile and move clicked one to it
+		for(let key in tiles) {
+ 			if (tiles[key] === null) {
+ 				tiles[key] = tiles[i]; 				
+ 			}
+ 		} 		
+
+ 		// clear clicked space 
+		tiles[i] = null;
+
+		this.setState({
+			tiles: tiles,			
+		});
 	}
 
 	renderTile(i) {
 	    return (
 	    	<Space 
 	    		value={this.state.tiles[i]} 	    		
-	    		onClick={() => alert(i)}
+	    		onClick={() => this.handleClick(i)}
 			/>
 		);
 	}
 // ========================================
 	render() {
 		return (
-			<div class="board">
+			<div className="board">
 				{this.renderTile(0)}
 				{this.renderTile(1)}
 				{this.renderTile(2)}
