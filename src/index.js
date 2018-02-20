@@ -23,9 +23,6 @@ class Board extends React.Component {
 
 	handleClick(i) {
 		const tiles = this.state.tiles.slice();
-
-		//alert('clicked: ' + i + ' tile: ' + tiles[i]);
-		//let moveThis = tiles[i];
 		
 		// find empty tile and move clicked one to it
 		for(let key in tiles) {
@@ -52,6 +49,9 @@ class Board extends React.Component {
 	}
 // ========================================
 	render() {
+
+		if (isWinner(this.state.tiles)) alert('You are a winner!');
+
 		return (
 			<div className="board">
 				{this.renderTile(0)}
@@ -71,7 +71,7 @@ class Board extends React.Component {
 				{this.renderTile(14)}
 				{this.renderTile(15)}
 			</div>
-		)
+		)	  	
 	}
 }
 
@@ -89,3 +89,24 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
+
+function isWinner(tiles) {
+	const clone = tiles.slice()
+	let prev = 0;
+	let win = true;
+
+	// delete empty tile from object so we can test
+	for (let key in clone) if (clone[key] == null) delete clone[key]
+
+	for (let key in clone) {
+		
+		if (prev > clone[key]) {
+			win = false;
+			break;
+		}
+
+		prev = clone[key];
+	}
+
+	if (win) return true;
+}
